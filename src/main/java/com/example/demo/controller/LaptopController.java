@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("laptops")
 
 public class LaptopController {
 
@@ -33,4 +32,8 @@ public class LaptopController {
     }
 
 
+    @PutMapping("updateLaptopWithId:{id}")
+    public void updateLaptopWithId(@RequestParam Integer id, @RequestBody Laptop laptop){
+        dao.updateLaptop(id,laptop);
+    }
 }

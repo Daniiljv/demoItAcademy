@@ -74,14 +74,17 @@ public class LaptopDao {
         }
     }
 
-    public void updateLaptop(Laptop laptop) {
+    public void updateLaptop(Integer id, Laptop laptop) {
         String sql = "UPDATE laptops SET brand = ?, model = ?, price = ? WHERE id = ?";
         try (Connection conn = connect();
              PreparedStatement statement = conn.prepareStatement(sql)) {
+
+            statement.setInt(4,id);
+
             statement.setString(1, laptop.getBrand());
             statement.setString(2, laptop.getModel());
             statement.setBigDecimal(3, laptop.getPrice());
-            statement.setInt(4, laptop.getId());
+
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -90,7 +93,6 @@ public class LaptopDao {
 }
 
 
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/Daniiljv/demoItAcademy.git
-git push -u origin main
+
+
+
